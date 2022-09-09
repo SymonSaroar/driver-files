@@ -1,0 +1,125 @@
+#!/bin/bash
+
+ARGS=$@
+
+LINUX_USB_SUPPORT=yes
+LINUX_SRIOV_SUPPORT=no
+KERNEL_DIR=""
+NVIDIA_KERNEL_DIR=""
+
+ac_prev=
+for ac_option do
+
+    # If the previous option needs an argument, assign it.
+    if test -n "$ac_prev"; then
+        eval "$ac_prev=\$ac_option"
+        ac_prev=
+        continue
+    fi
+
+    case "$ac_option" in
+        -*=*) ac_optarg=`echo "$ac_option" | sed 's/[-_a-zA-Z0-9]*=//'` ;;
+        *) ac_optarg= ;;
+    esac
+
+    case $ac_option in
+        --disable-usb-support)
+            LINUX_USB_SUPPORT=no ;;
+        --enable-usb-support=no)
+            LINUX_USB_SUPPORT=no ;;
+        --enable-sriov-support=yes)
+            LINUX_SRIOV_SUPPORT=yes ;;
+        --enable-sriov-support)
+            LINUX_SRIOV_SUPPORT=yes ;;
+        --with-gpudirect-source)
+            ac_prev=$ac_option ;;
+        --with-gpudirect-source=*)
+            NVIDIA_KERNEL_DIR=$ac_optarg ;;
+        --with-kernel-source)
+            ac_prev=$ac_option ;;
+        --with-kernel-source=*)
+            KERNEL_DIR=$ac_optarg ;;
+        --with-cpu-type)
+            ac_prev=$ac_option ;;
+        --with-cpu-type=*)
+            cpu_type=$ac_optarg ;;
+		--enable-precompiled)
+            precompiled=yes ;;
+    esac
+done
+
+if test $LINUX_SRIOV_SUPPORT = yes ; then
+    if [ ! -f ./configure.sriov ]; then
+        echo "SR-IOV is not supported in your build"; exit 1;
+    fi
+fi
+
+VER=`uname -r`
+VER_BASE=`echo $VER | cut -c 1-3`
+VER_MAJOR=`echo $VER | cut -f 1 -d "."`
+VER_MINOR=`echo $VER | cut -f 2 -d "."`
+VER_SUBMINOR=`echo $VER | cut -f 3 -d "." | cut -f 1 -d "-"`
+
+if test ! "$precompiled" = "yes" ; then
+	if test -z $KERNEL_DIR ; then
+		KERNEL_DIR=/lib/modules/$VER/build
+		KERNEL_SRC=/lib/modules/$VER/source
+		if test ! -d $KERNEL_SRC ; then
+			KERNEL_SRC=$KERNEL_DIR
+		fi
+		if test ! -d $KERNEL_DIR ; then
+			KERNEL_DIR=/usr/src/linux-headers-$VER
+			KERNEL_SRC=$KERNEL_DIR
+		fi
+	fi
+
+	if test ! -d $KERNEL_DIR ; then
+		KERNEL_DIR=/usr/src/linux
+		if test ! -d $KERNEL_DIR ; then
+			echo "$ac_t""not found" 1>&6
+			{ echo "configure: error: please install the kernel source or \
+				specify alternate location" 1>&2; exit 1; }
+		fi
+	fi
+fi
+
+if test $VER_MAJOR -ge "3"; then
+    CONF_HEADER=generated/autoconf.h
+else if test $VER_BASE = "2.6" -a $VER_SUBMINOR -ge 33; then
+    CONF_HEADER=generated/autoconf.h
+else if test $VER_BASE = "2.6" -a $VER_SUBMINOR -ge 17; then
+    CONF_HEADER=linux/autoconf.h
+else
+    CONF_HEADER=linux/config.h
+fi
+fi
+fi
+
+if test -e $KERNEL_SRC/include/$CONF_HEADER ; then
+    INCLUDEDIRS="-I$KERNEL_SRC/include"
+else if test -e $KERNEL_DIR/include/$CONF_HEADER ; then
+    INCLUDEDIRS="-I$KERNEL_DIR/include"
+fi
+fi
+
+cat makefile.in | \
+    sed "s/@LINUX_USB_SUPPORT@/$LINUX_USB_SUPPORT/g" | \
+    sed "s/@LINUX_SRIOV_SUPPORT@/$LINUX_SRIOV_SUPPORT/g" | \
+    sed "s#@KERNEL_DIR@#$KERNEL_DIR#g" \
+    > makefile
+
+if test $LINUX_USB_SUPPORT = yes ; then
+    ./configure.usb $ARGS
+    EXTRA_ARGS="--enable-usb-support"
+else
+    EXTRA_ARGS="--disable-usb-support"
+fi
+
+if test $LINUX_SRIOV_SUPPORT = yes ; then
+    ./configure.sriov $ARGS
+    EXTRA_ARGS="$EXTRA_ARGS --enable-sriov-support"
+else
+    EXTRA_ARGS="$EXTRA_ARGS --disable-sriov-support"
+fi
+
+./configure.wd $ARGS $EXTRA_ARGS

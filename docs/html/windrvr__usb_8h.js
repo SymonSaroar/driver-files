@@ -1,0 +1,88 @@
+var windrvr__usb_8h =
+[
+    [ "WDU_PIPE_INFO", "structWDU__PIPE__INFO.html", "structWDU__PIPE__INFO" ],
+    [ "WDU_INTERFACE_DESCRIPTOR", "structWDU__INTERFACE__DESCRIPTOR.html", "structWDU__INTERFACE__DESCRIPTOR" ],
+    [ "WDU_ENDPOINT_DESCRIPTOR", "structWDU__ENDPOINT__DESCRIPTOR.html", "structWDU__ENDPOINT__DESCRIPTOR" ],
+    [ "WDU_CONFIGURATION_DESCRIPTOR", "structWDU__CONFIGURATION__DESCRIPTOR.html", "structWDU__CONFIGURATION__DESCRIPTOR" ],
+    [ "WDU_DEVICE_DESCRIPTOR", "structWDU__DEVICE__DESCRIPTOR.html", "structWDU__DEVICE__DESCRIPTOR" ],
+    [ "WDU_ALTERNATE_SETTING", "structWDU__ALTERNATE__SETTING.html", "structWDU__ALTERNATE__SETTING" ],
+    [ "WDU_INTERFACE", "structWDU__INTERFACE.html", "structWDU__INTERFACE" ],
+    [ "WDU_CONFIGURATION", "structWDU__CONFIGURATION.html", "structWDU__CONFIGURATION" ],
+    [ "WDU_DEVICE", "structWDU__DEVICE.html", "structWDU__DEVICE" ],
+    [ "WDU_MATCH_TABLE", "structWDU__MATCH__TABLE.html", "structWDU__MATCH__TABLE" ],
+    [ "WDU_GET_DEVICE_DATA", "structWDU__GET__DEVICE__DATA.html", "structWDU__GET__DEVICE__DATA" ],
+    [ "WDU_SET_INTERFACE", "structWDU__SET__INTERFACE.html", "structWDU__SET__INTERFACE" ],
+    [ "WDU_RESET_PIPE", "structWDU__RESET__PIPE.html", "structWDU__RESET__PIPE" ],
+    [ "WDU_HALT_TRANSFER", "structWDU__HALT__TRANSFER.html", "structWDU__HALT__TRANSFER" ],
+    [ "WDU_WAKEUP", "structWDU__WAKEUP.html", "structWDU__WAKEUP" ],
+    [ "WDU_SELECTIVE_SUSPEND", "structWDU__SELECTIVE__SUSPEND.html", "structWDU__SELECTIVE__SUSPEND" ],
+    [ "WDU_RESET_DEVICE", "structWDU__RESET__DEVICE.html", "structWDU__RESET__DEVICE" ],
+    [ "WDU_TRANSFER", "structWDU__TRANSFER.html", "structWDU__TRANSFER" ],
+    [ "WDU_GET_DESCRIPTOR", "structWDU__GET__DESCRIPTOR.html", "structWDU__GET__DESCRIPTOR" ],
+    [ "WDU_STREAM", "structWDU__STREAM.html", "structWDU__STREAM" ],
+    [ "WDU_STREAM_STATUS", "structWDU__STREAM__STATUS.html", "structWDU__STREAM__STATUS" ],
+    [ "PAD_TO_64", "windrvr__usb_8h_a8855ef89d5f471fa461e13592eed1079.html#a8855ef89d5f471fa461e13592eed1079", null ],
+    [ "PAD_TO_64_PTR_ARR", "windrvr__usb_8h_af4ad121550592305fceb8b49efe59b8a.html#af4ad121550592305fceb8b49efe59b8a", null ],
+    [ "WD_USB_MAX_ALT_SETTINGS", "windrvr__usb_8h_a56702d2ebf326a03bf86b1592a0dec37.html#a56702d2ebf326a03bf86b1592a0dec37", null ],
+    [ "WD_USB_MAX_ENDPOINTS", "windrvr__usb_8h_ab11c40b603422a8b4efbc0530fbfac44.html#ab11c40b603422a8b4efbc0530fbfac44", null ],
+    [ "WD_USB_MAX_INTERFACES", "windrvr__usb_8h_affc4295a37330013911ad627ec1c0ae4.html#affc4295a37330013911ad627ec1c0ae4", null ],
+    [ "WD_USB_MAX_PIPE_NUMBER", "windrvr__usb_8h_ac795ab7f8761314ba3f719acb2aeda52.html#ac795ab7f8761314ba3f719acb2aeda52", null ],
+    [ "WDU_CONFIG_DESC_TYPE", "windrvr__usb_8h_a5a2cb525dea793d18ca2a6acd3cda4b2.html#a5a2cb525dea793d18ca2a6acd3cda4b2", null ],
+    [ "WDU_DEVICE_DESC_TYPE", "windrvr__usb_8h_a629dd333b69ccc372f3145738df553e8.html#a629dd333b69ccc372f3145738df553e8", null ],
+    [ "WDU_ENDPOINT_ADDRESS_MASK", "windrvr__usb_8h_aecd1920133a6d7d3c4670bb04d891925.html#aecd1920133a6d7d3c4670bb04d891925", null ],
+    [ "WDU_ENDPOINT_DESC_TYPE", "windrvr__usb_8h_a26944169707fe06e722f6a9f3e04a9f6.html#a26944169707fe06e722f6a9f3e04a9f6", null ],
+    [ "WDU_ENDPOINT_DIRECTION_IN", "windrvr__usb_8h_a92d082444a55eb77bc75b58c7346d129.html#a92d082444a55eb77bc75b58c7346d129", null ],
+    [ "WDU_ENDPOINT_DIRECTION_MASK", "windrvr__usb_8h_a1e6fc69d509569e0a10e6cc063be2dd4.html#a1e6fc69d509569e0a10e6cc063be2dd4", null ],
+    [ "WDU_ENDPOINT_DIRECTION_OUT", "windrvr__usb_8h_a87e5ee4ec82c3d71e205b9535bc4d6fe.html#a87e5ee4ec82c3d71e205b9535bc4d6fe", null ],
+    [ "WDU_ENDPOINT_TYPE_MASK", "windrvr__usb_8h_a299a0eda0f844bc8ac771889cda5262a.html#a299a0eda0f844bc8ac771889cda5262a", null ],
+    [ "WDU_GET_MAX_PACKET_SIZE", "windrvr__usb_8h_a3d7b458f976703e4a6342bc2db99c00f.html#a3d7b458f976703e4a6342bc2db99c00f", null ],
+    [ "WDU_INTERFACE_DESC_TYPE", "windrvr__usb_8h_a9b1ef605beb6ad3fbebca0d6e50dea45.html#a9b1ef605beb6ad3fbebca0d6e50dea45", null ],
+    [ "WDU_STRING_DESC_STRING", "windrvr__usb_8h_ac10cc4f86183b28627e9e6c09c7dd7a7.html#ac10cc4f86183b28627e9e6c09c7dd7a7", null ],
+    [ "WDU_REGISTER_DEVICES_HANDLE", "windrvr__usb_8h_ae60804629b146dca1057fab576201b3d.html#ae60804629b146dca1057fab576201b3d", null ],
+    [ "USB_DIR", "windrvr__usb_8h_a1b28bea2c9a1d61fc279fe44a15ff1b4.html#a1b28bea2c9a1d61fc279fe44a15ff1b4", [
+      [ "USB_DIR_IN", "windrvr__usb_8h_a1b28bea2c9a1d61fc279fe44a15ff1b4.html#a1b28bea2c9a1d61fc279fe44a15ff1b4a459af0a7bedce0e507024159485ebb06", null ],
+      [ "USB_DIR_OUT", "windrvr__usb_8h_a1b28bea2c9a1d61fc279fe44a15ff1b4.html#a1b28bea2c9a1d61fc279fe44a15ff1b4a0817311532cb7378f3949018d268e4be", null ],
+      [ "USB_DIR_IN_OUT", "windrvr__usb_8h_a1b28bea2c9a1d61fc279fe44a15ff1b4.html#a1b28bea2c9a1d61fc279fe44a15ff1b4aea25daaab752d367617cfac0db93be87", null ]
+    ] ],
+    [ "USB_PIPE_TYPE", "windrvr__usb_8h_a49c954c0544ab47468451954b1fdf8fb.html#a49c954c0544ab47468451954b1fdf8fb", [
+      [ "PIPE_TYPE_CONTROL", "windrvr__usb_8h_a49c954c0544ab47468451954b1fdf8fb.html#a49c954c0544ab47468451954b1fdf8fbaded116ea3bc65c05f2d42dfa139f3667", null ],
+      [ "PIPE_TYPE_ISOCHRONOUS", "windrvr__usb_8h_a49c954c0544ab47468451954b1fdf8fb.html#a49c954c0544ab47468451954b1fdf8fbad039599cfbc673bf27f43dfbd62b5163", null ],
+      [ "PIPE_TYPE_BULK", "windrvr__usb_8h_a49c954c0544ab47468451954b1fdf8fb.html#a49c954c0544ab47468451954b1fdf8fbaefb4af6f9a2a7148faa8572bc07e3626", null ],
+      [ "PIPE_TYPE_INTERRUPT", "windrvr__usb_8h_a49c954c0544ab47468451954b1fdf8fb.html#a49c954c0544ab47468451954b1fdf8fba39a128322b8dcdc72dea840234cea25a", null ]
+    ] ],
+    [ "WD_DEVICE_REGISTRY_PROPERTY", "windrvr__usb_8h_a4aeef81faa1a87f8e1aeb019671ef73d.html#a4aeef81faa1a87f8e1aeb019671ef73d", [
+      [ "WdDevicePropertyDeviceDescription", "windrvr__usb_8h_a4aeef81faa1a87f8e1aeb019671ef73d.html#a4aeef81faa1a87f8e1aeb019671ef73dadd02ced492f850ed0c6d411b4221d8e3", null ],
+      [ "WdDevicePropertyHardwareID", "windrvr__usb_8h_a4aeef81faa1a87f8e1aeb019671ef73d.html#a4aeef81faa1a87f8e1aeb019671ef73da1343372754b7af2b9c44ad38f5cfde5f", null ],
+      [ "WdDevicePropertyCompatibleIDs", "windrvr__usb_8h_a4aeef81faa1a87f8e1aeb019671ef73d.html#a4aeef81faa1a87f8e1aeb019671ef73da3ec443c2585b2ed83973d50ad15ea74f", null ],
+      [ "WdDevicePropertyBootConfiguration", "windrvr__usb_8h_a4aeef81faa1a87f8e1aeb019671ef73d.html#a4aeef81faa1a87f8e1aeb019671ef73da925919e6ffddee87ab9f6a31011fd60a", null ],
+      [ "WdDevicePropertyBootConfigurationTranslated", "windrvr__usb_8h_a4aeef81faa1a87f8e1aeb019671ef73d.html#a4aeef81faa1a87f8e1aeb019671ef73da5dea5d9d8dd6be3c0b4d7ab42e5975a6", null ],
+      [ "WdDevicePropertyClassName", "windrvr__usb_8h_a4aeef81faa1a87f8e1aeb019671ef73d.html#a4aeef81faa1a87f8e1aeb019671ef73da4eb4782c79bae1752f7bf250c4ab5c6f", null ],
+      [ "WdDevicePropertyClassGuid", "windrvr__usb_8h_a4aeef81faa1a87f8e1aeb019671ef73d.html#a4aeef81faa1a87f8e1aeb019671ef73dacabe833de177dbbef00cc1054920585c", null ],
+      [ "WdDevicePropertyDriverKeyName", "windrvr__usb_8h_a4aeef81faa1a87f8e1aeb019671ef73d.html#a4aeef81faa1a87f8e1aeb019671ef73dafee0bf5084b8eac283a1fd6028461c83", null ],
+      [ "WdDevicePropertyManufacturer", "windrvr__usb_8h_a4aeef81faa1a87f8e1aeb019671ef73d.html#a4aeef81faa1a87f8e1aeb019671ef73da8251a1ef3a6b4b5f6c070e1534fe0f71", null ],
+      [ "WdDevicePropertyFriendlyName", "windrvr__usb_8h_a4aeef81faa1a87f8e1aeb019671ef73d.html#a4aeef81faa1a87f8e1aeb019671ef73da47445b195c74f08511f6026e327de87f", null ],
+      [ "WdDevicePropertyLocationInformation", "windrvr__usb_8h_a4aeef81faa1a87f8e1aeb019671ef73d.html#a4aeef81faa1a87f8e1aeb019671ef73dada9a98e4218e01eec8b46aac0e18260c", null ],
+      [ "WdDevicePropertyPhysicalDeviceObjectName", "windrvr__usb_8h_a4aeef81faa1a87f8e1aeb019671ef73d.html#a4aeef81faa1a87f8e1aeb019671ef73daf35f77133c72a10f12766687f7751091", null ],
+      [ "WdDevicePropertyBusTypeGuid", "windrvr__usb_8h_a4aeef81faa1a87f8e1aeb019671ef73d.html#a4aeef81faa1a87f8e1aeb019671ef73daf0862a9a23aadc917d44f549bf678c16", null ],
+      [ "WdDevicePropertyLegacyBusType", "windrvr__usb_8h_a4aeef81faa1a87f8e1aeb019671ef73d.html#a4aeef81faa1a87f8e1aeb019671ef73da4553a3212a69710e7c9f8bf7b643bdcc", null ],
+      [ "WdDevicePropertyBusNumber", "windrvr__usb_8h_a4aeef81faa1a87f8e1aeb019671ef73d.html#a4aeef81faa1a87f8e1aeb019671ef73da5e25aae8c176e96404a9b89ac22b1ed0", null ],
+      [ "WdDevicePropertyEnumeratorName", "windrvr__usb_8h_a4aeef81faa1a87f8e1aeb019671ef73d.html#a4aeef81faa1a87f8e1aeb019671ef73da1cbd32159588e1713678e1617672f71d", null ],
+      [ "WdDevicePropertyAddress", "windrvr__usb_8h_a4aeef81faa1a87f8e1aeb019671ef73d.html#a4aeef81faa1a87f8e1aeb019671ef73daea7abd19ac068ad6aa0eccf376dfca6d", null ],
+      [ "WdDevicePropertyUINumber", "windrvr__usb_8h_a4aeef81faa1a87f8e1aeb019671ef73d.html#a4aeef81faa1a87f8e1aeb019671ef73da8f845433570c1657aa83bb86f3ac9e8f", null ],
+      [ "WdDevicePropertyInstallState", "windrvr__usb_8h_a4aeef81faa1a87f8e1aeb019671ef73d.html#a4aeef81faa1a87f8e1aeb019671ef73da0483417583793762d438cecec4a7ac52", null ],
+      [ "WdDevicePropertyRemovalPolicy", "windrvr__usb_8h_a4aeef81faa1a87f8e1aeb019671ef73d.html#a4aeef81faa1a87f8e1aeb019671ef73daef63938cbdcb7845c2304fd9e10db574", null ]
+    ] ],
+    [ "WDU_DIR", "windrvr__usb_8h_afaa3776142f1d403316878d926d3c923.html#afaa3776142f1d403316878d926d3c923", [
+      [ "WDU_DIR_IN", "windrvr__usb_8h_afaa3776142f1d403316878d926d3c923.html#afaa3776142f1d403316878d926d3c923a88d85c8d68c9207c6044b05d454c36f2", null ],
+      [ "WDU_DIR_OUT", "windrvr__usb_8h_afaa3776142f1d403316878d926d3c923.html#afaa3776142f1d403316878d926d3c923a7a60b028fc2fb0cc43ad8f62fe30adf4", null ],
+      [ "WDU_DIR_IN_OUT", "windrvr__usb_8h_afaa3776142f1d403316878d926d3c923.html#afaa3776142f1d403316878d926d3c923a590873619cd65bd45d364d2f8ed09fd3", null ]
+    ] ],
+    [ "WDU_SELECTIVE_SUSPEND_OPTIONS", "windrvr__usb_8h_a5798efecf98d80dceec7de0127fc41c9.html#a5798efecf98d80dceec7de0127fc41c9", [
+      [ "WDU_SELECTIVE_SUSPEND_SUBMIT", "windrvr__usb_8h_a5798efecf98d80dceec7de0127fc41c9.html#a5798efecf98d80dceec7de0127fc41c9a85252ba446e5f5b796d6aca0c8e808d8", null ],
+      [ "WDU_SELECTIVE_SUSPEND_CANCEL", "windrvr__usb_8h_a5798efecf98d80dceec7de0127fc41c9.html#a5798efecf98d80dceec7de0127fc41c9aa7379dc3f668bfe7e2f50cdc7a931a33", null ]
+    ] ],
+    [ "WDU_WAKEUP_OPTIONS", "windrvr__usb_8h_aaa0d724c45ffce7350ed7f6650a4189d.html#aaa0d724c45ffce7350ed7f6650a4189d", [
+      [ "WDU_WAKEUP_ENABLE", "windrvr__usb_8h_aaa0d724c45ffce7350ed7f6650a4189d.html#aaa0d724c45ffce7350ed7f6650a4189dae017e8fe3d724477f330933c7079906b", null ],
+      [ "WDU_WAKEUP_DISABLE", "windrvr__usb_8h_aaa0d724c45ffce7350ed7f6650a4189d.html#aaa0d724c45ffce7350ed7f6650a4189dafdf0bac86d03ce164738d367aba08d98", null ]
+    ] ]
+];

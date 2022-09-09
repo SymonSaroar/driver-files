@@ -1,0 +1,1 @@
+cmd_/data01/win/WD1511LNX86_64/redist/windrvr1511.ko := ld -r -m elf_x86_64 -z max-page-size=0x200000 -T ./scripts/module-common.lds --build-id  -o /data01/win/WD1511LNX86_64/redist/windrvr1511.ko /data01/win/WD1511LNX86_64/redist/windrvr1511.o /data01/win/WD1511LNX86_64/redist/windrvr1511.mod.o ;  true

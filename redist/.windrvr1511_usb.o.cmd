@@ -1,0 +1,1 @@
+cmd_/data01/win/WD1511LNX86_64/redist/windrvr1511_usb.o := ld -m elf_x86_64 -z max-page-size=0x200000   -r -o /data01/win/WD1511LNX86_64/redist/windrvr1511_usb.o /data01/win/WD1511LNX86_64/redist/wdusb_linux.o 

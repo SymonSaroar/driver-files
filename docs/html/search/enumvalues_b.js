@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['s_5fall_0',['S_ALL',['../windrvr_8h_a4fddd8a779a35717aa61858d082fafe1.html#a4fddd8a779a35717aa61858d082fafe1a72123f3379cea6e82471649e332f9bbe',1,'windrvr.h']]],
+  ['s_5fcard_5freg_1',['S_CARD_REG',['../windrvr_8h_a4fddd8a779a35717aa61858d082fafe1.html#a4fddd8a779a35717aa61858d082fafe1afb38319c79fc0273260b112640dfa661',1,'windrvr.h']]],
+  ['s_5fdma_2',['S_DMA',['../windrvr_8h_a4fddd8a779a35717aa61858d082fafe1.html#a4fddd8a779a35717aa61858d082fafe1a51b204507a31840e4a6f9c76fd3dd1c6',1,'windrvr.h']]],
+  ['s_5fevent_3',['S_EVENT',['../windrvr_8h_a4fddd8a779a35717aa61858d082fafe1.html#a4fddd8a779a35717aa61858d082fafe1a5704f4c8974636caa044caa2a46fee5f',1,'windrvr.h']]],
+  ['s_5fint_4',['S_INT',['../windrvr_8h_a4fddd8a779a35717aa61858d082fafe1.html#a4fddd8a779a35717aa61858d082fafe1a5d2095a9c6c3224606729ef1b14ec199',1,'windrvr.h']]],
+  ['s_5fio_5',['S_IO',['../windrvr_8h_a4fddd8a779a35717aa61858d082fafe1.html#a4fddd8a779a35717aa61858d082fafe1a2dc497c3b131614ee2a69120d0bd482d',1,'windrvr.h']]],
+  ['s_5fipc_6',['S_IPC',['../windrvr_8h_a4fddd8a779a35717aa61858d082fafe1.html#a4fddd8a779a35717aa61858d082fafe1ad8b35805616fe64ebb2f3bf5d5965903',1,'windrvr.h']]],
+  ['s_5fker_5fbuf_7',['S_KER_BUF',['../windrvr_8h_a4fddd8a779a35717aa61858d082fafe1.html#a4fddd8a779a35717aa61858d082fafe1ab59e32c28557287945ab963545d8820c',1,'windrvr.h']]],
+  ['s_5fker_5fdrv_8',['S_KER_DRV',['../windrvr_8h_a4fddd8a779a35717aa61858d082fafe1.html#a4fddd8a779a35717aa61858d082fafe1ab773ea4446ef8ac61a1f614573e11b10',1,'windrvr.h']]],
+  ['s_5fker_5fplug_9',['S_KER_PLUG',['../windrvr_8h_a4fddd8a779a35717aa61858d082fafe1.html#a4fddd8a779a35717aa61858d082fafe1a960cfb138bcb62c4850c47d9d1ec2f27',1,'windrvr.h']]],
+  ['s_5flicense_10',['S_LICENSE',['../windrvr_8h_a4fddd8a779a35717aa61858d082fafe1.html#a4fddd8a779a35717aa61858d082fafe1a54f4c6933c2ed1f4adbb64901f2cf147',1,'windrvr.h']]],
+  ['s_5fmem_11',['S_MEM',['../windrvr_8h_a4fddd8a779a35717aa61858d082fafe1.html#a4fddd8a779a35717aa61858d082fafe1aafaab45103061ad97e27ac06b8eea121',1,'windrvr.h']]],
+  ['s_5fmisc_12',['S_MISC',['../windrvr_8h_a4fddd8a779a35717aa61858d082fafe1.html#a4fddd8a779a35717aa61858d082fafe1a1a9abd3d13813d764c88fda7601f9256',1,'windrvr.h']]],
+  ['s_5fpci_13',['S_PCI',['../windrvr_8h_a4fddd8a779a35717aa61858d082fafe1.html#a4fddd8a779a35717aa61858d082fafe1ac3b8c8724a837236d4b04235e47d5609',1,'windrvr.h']]],
+  ['s_5fpnp_14',['S_PNP',['../windrvr_8h_a4fddd8a779a35717aa61858d082fafe1.html#a4fddd8a779a35717aa61858d082fafe1ad7f9175cfb9d20c807acc168c114b3b6',1,'windrvr.h']]],
+  ['s_5fusb_15',['S_USB',['../windrvr_8h_a4fddd8a779a35717aa61858d082fafe1.html#a4fddd8a779a35717aa61858d082fafe1a6bf1a712a9e415a75f7b3b154a5b090d',1,'windrvr.h']]],
+  ['sleep_5fbusy_16',['SLEEP_BUSY',['../windrvr_8h_abc5c98fcc1211af2b80116dd6e0a035d.html#abc5c98fcc1211af2b80116dd6e0a035da6c4277b7062680e032e6f521a080c3ce',1,'windrvr.h']]],
+  ['sleep_5fnon_5fbusy_17',['SLEEP_NON_BUSY',['../windrvr_8h_abc5c98fcc1211af2b80116dd6e0a035d.html#abc5c98fcc1211af2b80116dd6e0a035dab4a4bc66708265667355d88d84665f50',1,'windrvr.h']]],
+  ['slot_5fcaps_18',['SLOT_CAPS',['../pci__regs_8h_a4e0ceec687baa4f1ae24a6ab633eedd4.html#a4e0ceec687baa4f1ae24a6ab633eedd4aa58f6bf560c424214c365413c1e8c101',1,'pci_regs.h']]],
+  ['slot_5fcaps2_19',['SLOT_CAPS2',['../pci__regs_8h_a4e0ceec687baa4f1ae24a6ab633eedd4.html#a4e0ceec687baa4f1ae24a6ab633eedd4af62610f980477eb56e8d1bbe3bf2ff54',1,'pci_regs.h']]],
+  ['slot_5fctl_20',['SLOT_CTL',['../pci__regs_8h_a4e0ceec687baa4f1ae24a6ab633eedd4.html#a4e0ceec687baa4f1ae24a6ab633eedd4aec86f7885d3e3f0325042211eadef577',1,'pci_regs.h']]],
+  ['slot_5fctl2_21',['SLOT_CTL2',['../pci__regs_8h_a4e0ceec687baa4f1ae24a6ab633eedd4.html#a4e0ceec687baa4f1ae24a6ab633eedd4a1bbc76e6c892cd6f781b8b23177cb66d',1,'pci_regs.h']]],
+  ['slot_5fsts_22',['SLOT_STS',['../pci__regs_8h_a4e0ceec687baa4f1ae24a6ab633eedd4.html#a4e0ceec687baa4f1ae24a6ab633eedd4a38eee1b99faa0ef9abb30afda44ee97f',1,'pci_regs.h']]],
+  ['slot_5fsts2_23',['SLOT_STS2',['../pci__regs_8h_a4e0ceec687baa4f1ae24a6ab633eedd4.html#a4e0ceec687baa4f1ae24a6ab633eedd4a6f39b370fad49b4f60a2aadbb24601da',1,'pci_regs.h']]]
+];

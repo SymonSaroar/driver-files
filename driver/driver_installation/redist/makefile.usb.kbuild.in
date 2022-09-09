@@ -1,0 +1,35 @@
+# Template file for configure script
+
+CSRCS = wdusb_linux.c
+OD = @OD@
+MODDIR = @MODDIR@
+MODULE_NAME = @MODULE_NAME@
+EXTRA_CFLAGS = @EXTRA_CFLAGS@
+KERNEL_DIR = @KERNEL_DIR@
+TARGET = $(OD)/$(MODULE_NAME).ko
+
+ifeq ($(DEBUG),1)
+        EXTRA_CFLAGS += -g -DDEBUG
+endif
+
+COBJS = $(patsubst %.c,%.o,$(CSRCS))
+
+obj-m += $(MODULE_NAME).o
+$(MODULE_NAME)-objs := $(COBJS)
+
+all: $(OD)
+	ln -sf makefile.usb.kbuild Makefile
+	make -C $(KERNEL_DIR) M=`pwd` modules
+	cp Module.symvers Module_usb.symvers
+	mv -f *.ko *.o *.mod.c $(OD)/
+	rm Makefile
+
+$(OD):
+	-@ mkdir $@
+
+clean:
+	rm -rf core .*.cmd Module.symvers Module_usb.symvers modules.order .tmp_versions .*o.d $(OD)
+
+install: all
+	./setup_inst_dir $(ROOT_DIR) $(MODDIR) $(TARGET)
+

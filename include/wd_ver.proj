@@ -1,0 +1,6 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <WDVersion>1511</WDVersion>
+        <JavaHome>"C:\Program Files"\Java\jdk1.8.0_191\bin\</JavaHome>
+    </PropertyGroup>
+</Project>

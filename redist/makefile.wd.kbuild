@@ -1,0 +1,45 @@
+# Template file for configure script
+
+CSRCS = linux_wrappers.c
+OD = LINUX.4.15.0-191-generic.x86_64
+MODDIR = /lib/modules/4.15.0-191-generic/kernel/drivers/misc
+LINK_OBJ = windrvr_gcc_v3.o_shipped
+MODULE_NAME = windrvr1511
+EXTRA_CFLAGS = -fno-omit-frame-pointer -O2 -DLINUX -DWINDRIVER_KERNEL  -DLINUX_USB_SUPPORT -I/lib/modules/4.15.0-191-generic/build/include -I/data01/win/WD1511LNX86_64/include -I/data01/win/WD1511LNX86_64 
+ROOT_DIR = /data01/win/WD1511LNX86_64
+KERNEL_DIR = /lib/modules/4.15.0-191-generic/build
+TARGET = $(OD)/$(MODULE_NAME).ko
+SHARED_OBJECT = libwdapi1511
+KBUILD_EXTRA_SYMBOLS=  /data01/win/WD1511LNX86_64/redist/Module_usb.symvers
+CONFIG_MODULE_SRCVERSION_ALL =
+
+ifeq ($(DEBUG),1)
+        EXTRA_CFLAGS += -g -DDEBUG
+endif
+
+COBJS = $(patsubst %.c,%.o,$(CSRCS))
+
+obj-m += $(MODULE_NAME).o
+$(MODULE_NAME)-objs := $(COBJS) $(basename $(LINK_OBJ)).o
+
+all: $(OD)
+	ln -sf makefile.wd.kbuild Makefile
+	make -C $(KERNEL_DIR) M=`pwd` modules
+	mv -f *.ko *.o *.mod.c $(OD)/
+	rm Makefile
+	cp Module.symvers Module_$(MODULE_NAME).symvers
+
+$(OD):
+	-@ mkdir $@
+
+clean:
+	rm -rf core .*.cmd Module.symvers modules.order .tmp_versions .*o.d $(OD)
+
+install: all
+	ln -sf $(ROOT_DIR)/lib/$(SHARED_OBJECT)_32.so /usr/lib/$(SHARED_OBJECT)_32.so; ln -sf $(ROOT_DIR)/lib/$(SHARED_OBJECT).so /usr/lib64/$(SHARED_OBJECT).so ; ln -sf $(ROOT_DIR)/lib/$(SHARED_OBJECT).so /usr/lib/$(SHARED_OBJECT).so
+	./setup_inst_dir $(ROOT_DIR) $(MODDIR) $(TARGET) no "change the permissions of /dev/windrvr1511"
+	
+precompiled_install:
+	ln -sf $(ROOT_DIR)/lib/$(SHARED_OBJECT)_32.so /usr/lib/$(SHARED_OBJECT)_32.so; ln -sf $(ROOT_DIR)/lib/$(SHARED_OBJECT).so /usr/lib64/$(SHARED_OBJECT).so ; ln -sf $(ROOT_DIR)/lib/$(SHARED_OBJECT).so /usr/lib/$(SHARED_OBJECT).so
+	./setup_inst_dir $(ROOT_DIR) $(MODDIR) $(TARGET) no "change the permissions of /dev/windrvr1511"
+

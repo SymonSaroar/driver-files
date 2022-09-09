@@ -1,0 +1,37 @@
+The DriverWizard has created:
+* A sample diagnostics application for testing the communication with
+  your hardware from the user mode.
+* Library files, which include API for controlling your hardware.
+
+  /data01/drive/driver/driver_files.txt
+         A detailed overview of all the generated files.
+
+  /data01/drive/driver/driver_lib.h
+         A library for controlling your hardware through WinDriver.
+
+  /data01/drive/driver/driver_lib.c
+         Contains the implementation of the functions used for
+         accessing each of the resources defined in the Wizard.
+
+  /data01/drive/driver/driver_diag.c
+         The sample user-mode application that diagnoses your
+         hardware using the driver_lib.c library.
+
+  /data01/drive/driver/linux/makefile
+         Linux makefile.
+
+  /data01/drive/driver/driver.inf
+         A formatted reference file for Windows that contains
+         information about installation files and devices, such as
+         filenames, version information and so on.
+
+Compiling this project:
+  For Linux, run  - "make -C linux"
+
+Converting to a GUI application:
+  This sample was written as a console mode application (rather than
+  a GUI application) that uses standard input and standard output.
+  This was done in order to simplify the source code. You may change it
+  into a GUI application by removing all calls to printf() and scanf()
+  functions, and calling MessageBox() instead.
+

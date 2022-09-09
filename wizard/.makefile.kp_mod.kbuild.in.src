@@ -1,0 +1,66 @@
+# Template file for configure script
+
+# TODO: Set INST_BASEDIR to the location of your KP installation
+# directory. For example: INST_BASEDIR=/home/john/KP_Install
+ifeq ($(INST_BASEDIR),)
+        INST_BASEDIR=@INST_BASEDIR@
+endif
+
+INST_BASEDIR:=$(wildcard $(INST_BASEDIR))
+
+CSRCS = @CSRCS@
+OD = @OD@
+LINK_OBJ = @LINK_OBJ@
+MODULE_NAME = @MODULE_NAME@
+TARGET = @TARGET@
+KERNEL_DIR = @KERNEL_DIR@
+EXTRA_CFLAGS = @EXTRA_CFLAGS@
+CMD_KP = @CMD_KP@
+CMD_API = @CMD_API@
+PROJECT_NAME = $(shell echo $(MODULE_NAME) | cut -d'_' -f 2)
+
+KERNEL_VERSION := $(shell uname -r)
+KERNEL_VERSION_510 := $(shell expr $(KERNEL_VERSION) \>= 5.10.0 "&" $(KERNEL_VERSION) \< 5.11.0)
+
+ifeq ($(KERNEL_VERSION_510), 1)
+    $(info )
+    $(info ------------------NOTE-----------------------)
+    $(info If compilation fails with an error related to the file 'module.lds', \
+        than this is a known issue with Linux Kernel 5.10.x)
+    $(info In order to fix the issue, the best way is to obtain the source code for your kernel \
+        and run 'make modules_prepare' on it)
+    $(info ---------------------------------------------)
+    $(info )
+endif
+
+ifeq ($(DEBUG),1)
+        EXTRA_CFLAGS += -g -DDEBUG
+endif
+
+COBJS = $(patsubst %.c,/%.o,$(CSRCS))
+
+obj-m += $(MODULE_NAME).o
+
+# When compiling with KBUILD, Linked .o_shipped file should be renamed to .o files!
+$(MODULE_NAME)-objs := $(COBJS) $(patsubst %.o_shipped,/%.o,$(notdir $(LINK_OBJ)))
+
+all: $(OD)
+	touch $(CMD_KP)
+	touch $(CMD_API)
+	cp -sf $(LINK_OBJ) .
+	ln -sf makefile.kp Makefile
+	make -C $(KERNEL_DIR) M=`pwd` KBUILD_EXTRA_SYMBOLS=`pwd`/Module_$(PROJECT_NAME).symvers modules
+	rm -f $(notdir $(LINK_OBJ))
+	mv -f *.ko *.o *.mod.c $(OD)/
+	rm Makefile
+
+$(OD):
+	-@mkdir $@
+
+clean:
+	rm -rf core .*.cmd modules.order .tmp_versions $(OD)
+
+install: all
+	@ /sbin/rmmod $(MODULE_NAME) 2> /dev/null || echo -n
+	/sbin/insmod $(TARGET)
+

@@ -1,0 +1,45 @@
+# Template file for configure script
+
+CSRCS = linux_wrappers.c
+OD = @OD@
+MODDIR = @MODDIR@
+LINK_OBJ = @LINK_OBJ@
+MODULE_NAME = @MODULE_NAME@
+EXTRA_CFLAGS = @EXTRA_CFLAGS@
+ROOT_DIR = @ROOT_DIR@
+KERNEL_DIR = @KERNEL_DIR@
+TARGET = $(OD)/$(MODULE_NAME).ko
+SHARED_OBJECT = @SHARED_OBJECT@
+KBUILD_EXTRA_SYMBOLS= @KBUILD_EXTRA_SYMBOLS@
+CONFIG_MODULE_SRCVERSION_ALL =
+
+ifeq ($(DEBUG),1)
+        EXTRA_CFLAGS += -g -DDEBUG
+endif
+
+COBJS = $(patsubst %.c,%.o,$(CSRCS))
+
+obj-m += $(MODULE_NAME).o
+$(MODULE_NAME)-objs := $(COBJS) $(basename $(LINK_OBJ)).o
+
+all: $(OD)
+	ln -sf makefile.wd.kbuild Makefile
+	make -C $(KERNEL_DIR) M=`pwd` modules
+	mv -f *.ko *.o *.mod.c $(OD)/
+	rm Makefile
+	cp Module.symvers Module_$(MODULE_NAME).symvers
+
+$(OD):
+	-@ mkdir $@
+
+clean:
+	rm -rf core .*.cmd Module.symvers modules.order .tmp_versions .*o.d $(OD)
+
+install: all
+	@LINK_LIB@
+	./setup_inst_dir $(ROOT_DIR) $(MODDIR) $(TARGET) @USE_UDEV@ "@DEV_CHANGE_PERMISSION_MSG@"
+	
+precompiled_install:
+	@LINK_LIB@
+	./setup_inst_dir $(ROOT_DIR) $(MODDIR) $(TARGET) @USE_UDEV@ "@DEV_CHANGE_PERMISSION_MSG@"
+

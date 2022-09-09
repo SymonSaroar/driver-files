@@ -1,0 +1,60 @@
+# Template file for configure script
+
+LINUX_USB_SUPPORT=@LINUX_USB_SUPPORT@
+LINUX_SRIOV_SUPPORT=@LINUX_SRIOV_SUPPORT@
+
+MAKE_WD = make -f makefile.wd.kbuild
+
+KERNEL_VERSION := $(shell uname -r)
+KERNEL_VERSION_GT_54 :=  $(shell expr $(KERNEL_VERSION) \>= 5.4)
+
+KERNEL_VERSION_510 := $(shell expr $(KERNEL_VERSION) \>= 5.10.0 "&" $(KERNEL_VERSION) \< 5.11.0)
+
+ifeq ($(KERNEL_VERSION_510), 1)
+    $(info )
+    $(info ------------------NOTE-----------------------)
+    $(info If compilation fails with an error related to the file 'module.lds', \
+        than this is a known issue with Linux Kernel 5.10.x)
+    $(info In order to fix the issue, the best way is to obtain the source code for your kernel \
+        and run 'make modules_prepare' on it)
+    $(info ---------------------------------------------)
+    $(info )
+endif
+
+GCC_VERSION := $(shell gcc --version | grep ^gcc | sed 's/^.* //g; s/-.*//g')
+GCC_VERSION_LT_V8 := $(shell expr $(GCC_VERSION) \< 8)
+
+ifeq ($(KERNEL_VERSION_GT_54), 1)
+    ifeq ($(GCC_VERSION_LT_V8) ,1)
+        $(warning WARNING: This gcc version [${GCC_VERSION}] might be too old, \
+                please do one of the following:)
+        $(warning 1. Use gcc version 8 or higher)
+        $(warning 2. Set CONFIG_CC_HAS_ASM_INLINE=n and recompile the kernel)
+    endif
+endif
+
+ifeq ($(LINUX_USB_SUPPORT), yes)
+    MAKE_USB = make -f makefile.usb.kbuild
+    MAKE_USB_CLEAN = $(MAKE_USB) clean
+endif
+
+ifeq ($(LINUX_SRIOV_SUPPORT), yes)
+    MAKE_SRIOV = make -f makefile.sriov.kbuild
+    MAKE_SRIOV_CLEAN = $(MAKE_SRIOV) clean
+endif
+
+all:
+	$(MAKE_USB)
+	$(MAKE_SRIOV)
+	$(MAKE_WD)
+
+install: all
+	$(MAKE_WD) install
+
+clean:
+	$(MAKE_USB_CLEAN)
+	$(MAKE_SRIOV_CLEAN)
+	$(MAKE_WD) clean
+	
+precompiled_install:
+	$(MAKE_WD) precompiled_install

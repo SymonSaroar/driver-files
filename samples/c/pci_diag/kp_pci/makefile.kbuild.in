@@ -1,0 +1,82 @@
+# Template file for configure script
+
+# TODO: Set WD_BASEDIR to the location of your WinDriver installation directory.
+#       For example: WD_BASEDIR=/home/john/WinDriver
+ifeq ($(WD_BASEDIR),)
+        WD_BASEDIR=@basedir@
+endif
+
+WD_BASEDIR:=$(wildcard $(WD_BASEDIR))
+
+ifeq ($(wildcard $(WD_BASEDIR)/include/windrvr.h),)
+        $(error Please edit the makefile and set the WD_BASEDIR variable \
+        to point to the location of your WinDriver installation directory)
+endif
+
+LIB_CSRCS = @LIB_CSRCS@
+MOD_CSRCS = @MOD_CSRCS@
+
+OD = @OD@
+LIB_LINK_OBJ = @LIB_LINK_OBJ@
+MOD_LINK_OBJ = @MOD_LINK_OBJ@
+MODULE_NAME = @MODULE_NAME@
+LIB_TARGET = @LIB_TARGET@
+MOD_TARGET = @MOD_TARGET@
+KERNEL_DIR = @KERNEL_DIR@
+EXTRA_CFLAGS = @EXTRA_CFLAGS@
+LIB_CFLAGS = @LIB_CFLAGS@
+MODULE_SYMVERS = @MODULE_SYMVERS@
+CONFIG_MODULE_SRCVERSION_ALL =
+
+KERNEL_VERSION := $(shell uname -r)
+KERNEL_VERSION_510 := $(shell expr $(KERNEL_VERSION) \>= 5.10.0 "&" $(KERNEL_VERSION) \< 5.11.0)
+
+ifeq ($(KERNEL_VERSION_510), 1)
+    $(info )
+    $(info ------------------NOTE-----------------------)
+    $(info If compilation fails with an error related to the file 'module.lds', \
+        than this is a known issue with Linux Kernel 5.10.x)
+    $(info In order to fix the issue, the best way is to obtain the source code for your kernel \
+        and run 'make modules_prepare' on it)
+    $(info ---------------------------------------------)
+    $(info )
+endif
+
+ifeq ($(DEBUG),1)
+        EXTRA_CFLAGS += -g -DDEBUG
+endif
+
+LIB_COBJS = $(patsubst %.c,$(OD)/%.o,$(notdir $(LIB_CSRCS)))
+MOD_COBJS = $(patsubst %.c,/%.o,$(MOD_CSRCS))
+
+obj-m += $(MODULE_NAME).o
+$(MODULE_NAME)-objs := $(MOD_COBJS) $(notdir $(patsubst %.o_shipped, %.o, $(MOD_LINK_OBJ)))
+
+all: $(OD) $(LIB_TARGET)
+	cp -sf $(MOD_LINK_OBJ) .
+	cp $(MODULE_SYMVERS) `pwd`/Module_wd.symvers
+	make -C $(KERNEL_DIR) M=`pwd` KBUILD_EXTRA_SYMBOLS=`pwd`/Module_wd.symvers modules
+	rm -f $(notdir $(MOD_LINK_OBJ))
+	mv -f *.ko *.o *.mod.c $(OD)/
+
+$(OD):
+	-@mkdir $@
+
+$(LIB_COBJS): $(OD)/%.o : %.c
+	@LIB_COBJS_RULE@
+
+$(LIB_TARGET): @LIB_TARGET_DEPS@
+	@LIB_TARGET_RULE@
+
+clean:
+	rm -rf core $(OD)/
+	make -C $(KERNEL_DIR) M=`pwd` clean
+	rm -rf Module.symvers Module_wd.symvers
+
+install: all
+	@ /sbin/rmmod $(MODULE_NAME) 2> /dev/null || echo -n
+	/sbin/insmod $(MOD_TARGET)
+
+# make sure the gmake thinks the source files exist
+$(notdir $(LIB_CSRCS)):
+

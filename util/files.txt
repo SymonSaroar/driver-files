@@ -1,0 +1,110 @@
+util/ directory contents:
+-------------------------
+
+This file describes the utility programs contained in the WinDriver/util
+directory.
+
+The source code for all utilities is available in the samples/ directory.
+
+
+  pci_scan
+  --------
+    - Description:
+      A utility for scanning the PCI bus for the installed PCI cards and
+      displaying the resources of the detected cards.
+
+    - Availability: All platforms.
+
+
+  pci_dump
+  --------
+    - Description:
+      A utility for getting a dump of all the PCI configuration registers
+      of the installed PCI cards.
+
+    - Availability: All platforms.
+
+
+  pci_diag
+  --------
+    - Description:
+      A utility that demonstrates communication with PCI cards using
+      WinDriver's API, including access to memory and I/O addresses on the
+      card, access to the PCI configuration space, interrupt handling, etc.
+      The sample also demonstrates communication with a Kernel PlugIn driver
+      (provided the sample KP_PCI driver is installed).
+      For more information regarding this sample, refer to the
+      WinDriver/samples/pci_diag/readme.txt file.
+
+    - Availability: All platforms.
+
+
+  usb_diag
+  --------
+    - Description:
+      A utility that demonstrates communication with USB devices using
+      WinDriver's APIs. The utility identifies all connected USB devices
+      (on Windows - identifies all devices that
+      have been registered with WinDriver via an INF file) and enables you
+      to view the devices' resources. The utility also allows you to
+      communicate with the identified USB devices - transfer data to/from
+      the device, set the active alternate setting, reset pipes, etc.
+
+    - Availability: All platforms.
+
+
+  wddebug
+  -------
+    - Description:
+      A console-mode (CUI) utility that enables you to view debug messages
+      sent from the WinDriver kernel or from your own application, and enables
+      you to set the debug mode On or Off.
+      When in debug mode, every I/O and memory transfer command is checked,
+      making sure they fit in with the card's registered resources.
+      If an illegal command is given, WinDriver will ignore the command
+      and show a warning message on the debug console.
+
+      Note: Debug mode slows down transfer operations, therefore it should
+      be used only in the development process. Running this command without
+      the "on" / "off" parameter will print the version of the installed
+      WinDriver kernel module and OS information.
+
+    - Availability: All platforms.
+
+
+  wddebug_gui
+  -----------
+    - Description:
+      A Graphical User Interface (GUI) version of the of WDDEBUG utility,
+      described above.
+
+    - Availability: All platforms (Except for Linux ARM).
+
+
+  wdreg
+  -----
+    - Description:
+      A utility for dynamically loading and unloading drivers.
+
+      On Windows and Linux you can use this utility to dynamically load and
+      unload the WinDriver kernel module (Windows: windrvr1511.sys,
+      installed via windrvr1511.inf; Linux: windrvr1511.o/.ko) as
+      well as Kernel PlugIn drivers you create.
+
+      On Windows the sample can also be used to install
+      device-INF files, thereby replacing the slower manual installation
+      process using Windows' Device Manager (which can still be used).
+
+      For Windows, this utility is provided in 3 forms:
+      WDREG and WDREG_GUI. Both versions can be run from the command line
+      and provide the same essential functionality. The difference is that
+      WDREG_GUI displays installation messages graphically, while WDREG
+      displays console messages.
+      WDREG_FRONTEND is a GUI based application that provides a full frontend
+      for the WDREG utility. It must be run as administrator.
+
+      For a detailed explanation regarding this utility and its usage, refer
+      to the WinDriver User's Manuals (available from the docs/ directory).
+
+    - Availability: Windows, Linux.
+
